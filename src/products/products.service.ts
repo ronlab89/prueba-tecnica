@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
@@ -8,7 +9,7 @@ export class ProductsService {
   private readonly products: CreateProductDto[];
 
   constructor() {
-    this.products = productsData;
+    this.products = productsData as CreateProductDto[];
   }
 
   create(createProductDto: CreateProductDto) {
