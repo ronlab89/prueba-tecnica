@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
@@ -13,7 +12,7 @@ export class ProductsService {
   }
 
   create(createProductDto: CreateProductDto) {
-    return 'This action adds a new product';
+    return this.products.push(createProductDto);
   }
 
   findAll() {
@@ -29,10 +28,25 @@ export class ProductsService {
   }
 
   update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
+    const product = this.products.find((product) => product.id === id);
+    if (!product) {
+      throw new NotFoundException(`Producto con id ${id} no encontrado`);
+    }
+    const productUpdated = this.products.map((product) => {
+      if (product.id === id) {
+        return {
+          ...product,
+          name: updateProductDto.name ?? product.name,
+          price: updateProductDto.price ?? product.price,
+        };
+      }
+      return product;
+    });
+    return productUpdated;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} product`;
+    const productDeleted = this.products.filter((product) => product.id !== id);
+    return productDeleted;
   }
 }
