@@ -1,9 +1,19 @@
-import React from "react";
+import { useState } from "react";
 import { formatterus } from "@/utils/formatter";
+import { addItemtoCart } from "@/services/cartService";
+import { useCartStore } from "@/store/cart.store";
 
 const CardProduct = ({ product }) => {
+  const cartItems = useCartStore((state) => state.cartItems);
+  const handleCartItems = useCartStore((state) => state.handleCartItems);
+  const [loading, setLoading] = useState({});
+
+  const handleAddItem = (product) => {
+    addItemtoCart({ setLoading, product, cartItems, handleCartItems });
+  };
+
   return (
-    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 pt-5">
+    <div className="w-full max-w-sm bg-slate-700 border-0 border-slate-100 rounded-lg shadow-sm pt-5">
       <div className="px-5 pb-5">
         <a href="#">
           <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
@@ -66,12 +76,13 @@ const CardProduct = ({ product }) => {
           <span className="text-3xl font-bold text-gray-900 dark:text-white">
             {formatterus.format(product.price)}
           </span>
-          <a
-            href="#"
-            className="text-white bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+          <button
+            onClick={() => handleAddItem(product)}
+            type="button"
+            className="text-white cursor-pointer bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
           >
             Add to cart
-          </a>
+          </button>
         </div>
       </div>
     </div>
