@@ -67,7 +67,7 @@ La solución está dividida en dos partes principales:
 - **Axios**: Cliente HTTP para consumir la API.
 - **React Router**: Manejo de rutas en la aplicación.
 - **TailwindCSS**: Framework CSS de código abierto para estilizar la interfaz.
-- **Zustand**: Estado global para manejar el estado de la aplicación.
+- **Zustand**: Gestion de estado global de la aplicación.
 
 ---
 
