@@ -96,6 +96,7 @@ Asegúrate de tener instalado lo siguiente:
    ```
 
 2. Instala las dependencias e inicia la aplicación en modo desarrollo:
+
    ```bash
    npm install
    npm run dev
@@ -103,7 +104,14 @@ Asegúrate de tener instalado lo siguiente:
    yarn install
    yarn dev
    ```
-3. La aplicación se ejecutará en `http://localhost:5173.`
+
+3. Crea un archivo `.env` en la raíz del proyecto con el siguiente contenido:
+
+```bash
+VITE_API_URL=http://localhost:4000/api/v1
+```
+
+4. La aplicación se ejecutará en `http://localhost:5173.`
 
 ---
 
