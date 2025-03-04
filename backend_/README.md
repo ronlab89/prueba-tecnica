@@ -57,6 +57,17 @@ Antes de ejecutar el proyecto, asegúrate de tener instalado lo siguiente:
 
 ---
 
+3. Crea un archivo `.env` en la raíz del proyecto con el siguiente contenido:
+
+```bash
+ORIGIN=http://localhost:5173
+PORT=4000
+```
+
+Este archivo contiene las variables de entorno necesarias para la configuración del servidor.
+
+---
+
 ## Ejecución del servidor
 
 Para ejecutar el servidor, sigue estos pasos:
