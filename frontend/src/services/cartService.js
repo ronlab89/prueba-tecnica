@@ -19,14 +19,14 @@ const addItemtoCart = async ({
         totalPrice: item.price * (item.quantity ?? 1),
       },
     });
-    console.log(res);
+    // console.log(res);
     if (res.status === 201) {
       getCartItems({ setLoading, handleCartItems });
       notify("success", res.data.message);
       return res.data;
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     notify("error", error?.response?.data?.message[0]);
   } finally {
     setLoading((prev) => ({ ...prev, addItem: false }));
@@ -40,13 +40,13 @@ const getCartItems = async ({ setLoading, handleCartItems }) => {
       method: "get",
       url: `${import.meta.env.VITE_API_URL}/cart`,
     });
-    console.log(res);
+    // console.log(res);
     if (res.status === 200) {
       handleCartItems(res.data.data);
       return res.data;
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   } finally {
     setLoading((prev) => ({ ...prev, cart: false }));
   }
@@ -64,7 +64,7 @@ const deleteItemFromCart = async ({
       method: "delete",
       url: `${import.meta.env.VITE_API_URL}/cart/${id}`,
     });
-    console.log(res);
+    // console.log(res);
     if (res.status === 200) {
       const filteredCartItems = cartItems.filter((item) => item.id !== id);
       handleCartItems(filteredCartItems);
@@ -72,7 +72,7 @@ const deleteItemFromCart = async ({
       return res.data;
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     notify("error", error?.response?.data?.message[0]);
   } finally {
     setLoading((prev) => ({ ...prev, deleteItemFromCart: false }));

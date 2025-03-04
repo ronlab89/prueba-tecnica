@@ -26,10 +26,10 @@ const CardProduct = ({ product }) => {
     <section className="w-full max-w-sm bg-slate-700 border-0 border-slate-100 rounded-lg shadow-sm pt-5">
       <article className="px-5 pb-5">
         <div className="flex justify-between items-center">
-          <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="text-sm md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
             {product.name}
           </h5>
-          <span className="text-3xl font-bold text-white">
+          <span className="text-lg md:text-3xl font-bold text-white">
             {formatterus.format(product.price)}
           </span>
         </div>

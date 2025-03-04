@@ -7,13 +7,13 @@ const getProducts = async ({ setLoading, handleProductsList }) => {
       method: "get",
       url: `${import.meta.env.VITE_API_URL}/products`,
     });
-    console.log("Res products: ", res);
+    // console.log("Res products: ", res);
     if (res.status === 200) {
       handleProductsList(res.data);
       return res.data.products;
     }
   } catch (error) {
-    console.error(error);
+    // console.error(error);
   } finally {
     setLoading((prev) => ({ ...prev, products: false }));
   }

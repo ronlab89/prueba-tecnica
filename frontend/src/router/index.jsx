@@ -4,6 +4,7 @@ import LayoutPublic from "@/layouts/LayoutPublic";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 const Cart = lazy(() => import("@/pages/Cart"));
+const Budget = lazy(() => import("@/pages/Budget"));
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,14 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={""}>
             <Cart />
+          </Suspense>
+        ),
+      },
+      {
+        path: "presupuesto",
+        element: (
+          <Suspense fallback={""}>
+            <Budget />
           </Suspense>
         ),
       },
