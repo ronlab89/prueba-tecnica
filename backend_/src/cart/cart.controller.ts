@@ -26,9 +26,9 @@ export class CartController {
   constructor(private readonly cartService: CartService) {}
 
   @Post()
-  @ApiOperation({ summary: 'Crea un nuevo producto' })
-  @ApiResponse({ status: 201, description: 'Producto creado' })
-  @ApiResponse({ status: 400, description: 'Error al crear el producto' })
+  @ApiOperation({ summary: 'Crea un nuevo item' })
+  @ApiResponse({ status: 201, description: 'Item agregado al carrito' })
+  @ApiResponse({ status: 400, description: 'Error al agregar el item' })
   @ApiBody({ type: CreateCartDto })
   @HttpCode(HttpStatus.CREATED)
   create(@Body() createCartDto: CreateCartDto) {
@@ -41,9 +41,12 @@ export class CartController {
   }
 
   @Get()
-  @ApiOperation({ summary: 'Encuentra todos los productos' })
-  @ApiResponse({ status: 200, description: 'Productos encontrados' })
-  @ApiResponse({ status: 400, description: 'Error al encontrar los productos' })
+  @ApiOperation({ summary: 'Encuentra todos los items del carrito' })
+  @ApiResponse({ status: 200, description: 'Items del carrito encontrados' })
+  @ApiResponse({
+    status: 400,
+    description: 'Error al encontrar los items del carrito',
+  })
   @HttpCode(HttpStatus.OK)
   findAll() {
     const carts = this.cartService.findAll();
@@ -55,9 +58,12 @@ export class CartController {
   }
 
   @Get(':id')
-  @ApiOperation({ summary: 'Encuentra un item por id' })
-  @ApiResponse({ status: 200, description: 'item encontrado' })
-  @ApiResponse({ status: 400, description: 'Error al encontrar el item' })
+  @ApiOperation({ summary: 'Encuentra un item del carrito por id' })
+  @ApiResponse({ status: 200, description: 'item del carrito encontrado' })
+  @ApiResponse({
+    status: 400,
+    description: 'Error al encontrar el item del carrito',
+  })
   @ApiParam({ name: 'id', type: Number, description: 'Id del item' })
   @HttpCode(HttpStatus.OK)
   findOne(@Param('id') id: number) {
@@ -70,9 +76,12 @@ export class CartController {
   }
 
   @Patch(':id')
-  @ApiOperation({ summary: 'Actualiza un producto' })
-  @ApiResponse({ status: 200, description: 'Producto actualizado' })
-  @ApiResponse({ status: 400, description: 'Error al actualizar el producto' })
+  @ApiOperation({ summary: 'Actualiza un item del carrito' })
+  @ApiResponse({ status: 200, description: 'Item del carrito actualizado' })
+  @ApiResponse({
+    status: 400,
+    description: 'Error al actualizar el item del carrito',
+  })
   @ApiParam({ name: 'id', type: Number, description: 'Id del item' })
   @ApiBody({ type: UpdateCartDto })
   @HttpCode(HttpStatus.OK)
@@ -86,9 +95,12 @@ export class CartController {
   }
 
   @Delete(':id')
-  @ApiOperation({ summary: 'Elimina un producto' })
-  @ApiResponse({ status: 200, description: 'Producto eliminado' })
-  @ApiResponse({ status: 400, description: 'Error al eliminar el producto' })
+  @ApiOperation({ summary: 'Elimina un item del carrito' })
+  @ApiResponse({ status: 200, description: 'Item del carrito eliminado' })
+  @ApiResponse({
+    status: 400,
+    description: 'Error al eliminar el item del carrito',
+  })
   @ApiParam({ name: 'id', type: Number, description: 'Id del item' })
   @HttpCode(HttpStatus.OK)
   remove(@Param('id') id: number) {
