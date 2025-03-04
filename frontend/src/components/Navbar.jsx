@@ -7,6 +7,7 @@ import Test from "@/icons/Test";
 const Navbar = () => {
   const linkId = useMenuStore((state) => state.linkId);
   const handleLinkId = useMenuStore((state) => state.handleLinkId);
+
   return (
     <nav className="w-full h-16 text-white flex justify-between items-center px-[40px]">
       <h1 className="font-semibold flex items-center">
